@@ -9,6 +9,13 @@
     <div class="bottom_transactions radius scroll">
       <div class="label_page">
         <span class="page_title">{{$t(pageTitle)}}</span>
+        <span
+          v-if="mode === TransactionCategories.TO_COSIGN"
+          @click.stop="wallet.setPartialTransactions($store)"
+          class="pointer refresh_btn"
+        >
+          {{ $t('refresh') }}
+        </span>
       </div>
 
       <div class="table_container">

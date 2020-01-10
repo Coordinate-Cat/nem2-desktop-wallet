@@ -24,7 +24,7 @@ export class TransactionFormatter {
         }
 
         if (options.transactionCategory && options.transactionCategory === TransactionCategories.TO_COSIGN) {
-            this.store.commit('ADD_TRANSACTIONS_TO_COSIGN', formattedTransactions)
+            this.store.commit('SET_TRANSACTIONS_TO_COSIGN', formattedTransactions)
             return
         }
 
