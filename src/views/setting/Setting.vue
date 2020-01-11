@@ -8,7 +8,7 @@
             v-for="(n,index) in navigatorList"
             :key="index"
             class="navigator_item pointer"
-            *@click="jumpToView(n,index)"
+            @click="jumpToView(n)"
           >
             <span
               :class="[ routeName === n.name ? 'selected_title' : '',n.meta.disabled ? 'disabled' : '' ]"
