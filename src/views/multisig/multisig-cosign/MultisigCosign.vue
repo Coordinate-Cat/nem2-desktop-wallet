@@ -13,19 +13,19 @@
 </template>
 
 <script lang="ts">
-  import {Component, Vue} from 'vue-property-decorator'
-  import {TransactionCategories} from "@/core/model"
-  import TransactionList from '@/components/transaction-list/TransactionList.vue'
-  import MultisigTree from '@/views/multisig/multisig-tree/MultisigTree.vue'
-  import ErrorTooltip from '@/components/other/forms/errorTooltip/ErrorTooltip.vue'
-  import DisabledForms from '@/components/disabled-forms/DisabledForms.vue'
+import {Component, Vue} from 'vue-property-decorator'
+import {TransactionCategories} from '@/core/model'
+import TransactionList from '@/components/transaction-list/TransactionList.vue'
+import MultisigTree from '@/views/multisig/multisig-tree/MultisigTree.vue'
+import ErrorTooltip from '@/components/other/forms/errorTooltip/ErrorTooltip.vue'
+import DisabledForms from '@/components/disabled-forms/DisabledForms.vue'
 
-  @Component({
-    components: {TransactionList, MultisigTree, ErrorTooltip, DisabledForms},
-  })
-  export default class MultisigCosign extends Vue {
-    TransactionCategories = TransactionCategories
-  }
+@Component({
+  components: {TransactionList, MultisigTree, ErrorTooltip, DisabledForms},
+})
+export default class MultisigCosign extends Vue {
+  TransactionCategories = TransactionCategories
+}
 </script>
 <style scoped lang="less">
 @import "MultisigCosign.less";

@@ -90,7 +90,7 @@ export class Listeners {
             Notice.trigger('Transaction_Reception', NoticeType.success, store)
 
             this.transactionFormatter.formatAndSaveNewTransaction(transaction)
-        })
+          })
 
         this.listener.unconfirmedAdded(this.address)
           .pipe(filter((transaction) => transaction.transactionInfo !== undefined))
@@ -99,7 +99,7 @@ export class Listeners {
 
             this.transactionFormatter.formatAndSaveNewTransaction(
               transaction,
-              {transactionStatusGroup: TransactionStatusGroups.unconfirmed}
+              {transactionStatusGroup: TransactionStatusGroups.unconfirmed},
             )
           })
       }, () => {
@@ -109,7 +109,7 @@ export class Listeners {
 
   private retry() {
     this.stop()
-    this.restartTimes++
+    this.restartTimes ++
     this.start()
   }
 }
