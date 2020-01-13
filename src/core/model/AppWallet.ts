@@ -62,7 +62,6 @@ export class AppWallet {
   linkedAccountKey: string
   remoteAccount: RemoteAccount | null
   numberOfMosaics: number
-  isKnownByTheNetwork = true
   temporaryRemoteNodeConfig: {
     publicKey: string
     node: string
@@ -315,22 +314,23 @@ export class AppWallet {
     localSave('accountMap', JSON.stringify(accountMap))
   }
 
-  async setAccountInfo(store: Store<AppState>): Promise<void> {
+  async setAccountInfo(store: Store<AppState>): Promise<{walletKnownByNetwork: boolean}> {
     const {EMPTY_PUBLIC_KEY} = networkConfig
     const [accountInfo] = await new AccountHttp(store.state.account.node)
       .getAccountsInfo([Address.createFromRawAddress(store.state.account.wallet.address)])
       .toPromise()
+
     if(!accountInfo){
-      this.isKnownByTheNetwork = false
       this.updateWallet(store)
-      return
+      return {walletKnownByNetwork: false}
     }
+
     this.numberOfMosaics = accountInfo.mosaics ? accountInfo.mosaics.length : 0
     this.importance = accountInfo.importance.compact()
     this.linkedAccountKey = accountInfo.linkedAccountKey === EMPTY_PUBLIC_KEY
       ? null : accountInfo.linkedAccountKey
-    this.isKnownByTheNetwork = true
     this.updateWallet(store)
+    return {walletKnownByNetwork: true}
   }
 
   async updateAccountBalance(balance: number, store: Store<AppState>): Promise<void> {
