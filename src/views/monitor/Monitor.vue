@@ -137,8 +137,6 @@
                 {{ $t('time') }}
                 <span class="title_txt">
                   {{ NetworkProperties.getTimeFromBlockNumber(NetworkProperties.height) }}
-                  span>
-                  an>
                 </span></span>
             </div>
             <img src="@/common/img/monitor/amount.png">
